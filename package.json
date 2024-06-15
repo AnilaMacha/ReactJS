@@ -1,0 +1,32 @@
+{
+  "name": "reactjs",
+  "version": "1.0.0",
+  "description": "this is react js",
+  
+  "scripts": {
+    "start": "parcel app.html",
+    "build": "parcel build app.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnilaMacha/ReactJS.git"
+  },
+  "keywords": [
+    "reactjs"
+  ],
+  "author": "ISC",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnilaMacha/ReactJS/issues"
+  },
+  "homepage": "https://github.com/AnilaMacha/ReactJS#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
