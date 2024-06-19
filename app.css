@@ -9,9 +9,10 @@
 }
 .logo{
   width:80px;
+  margin-top: 24px;
 }
 .nav-items{
-  padding: 0px 20px
+  padding: 10px 20px
 }
 .nav-items > ul {
   display:flex;
