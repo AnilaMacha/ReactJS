@@ -19,9 +19,6 @@ import Body from "./components/Body.js"
  * -contact
  */
 
-
-
-
 const AppLayout=() => {
   return(
     <div className="app">
