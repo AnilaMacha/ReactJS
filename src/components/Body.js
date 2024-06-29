@@ -1,11 +1,14 @@
 import RestaurantCard from "./RestaurantCard.js";
 import resList from "../utils/mockData.js";
 import {useState , useEffect} from "react";
+import {Shimmer} from "./Shimmer.js";
 
 
 const Body = () => {
-  const [ListOfRestaurants, setListOfRestaurants] = useState(resList);
-
+  const [ListOfRestaurants, setListOfRestaurants] = useState([]);
+  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+  
+  const [searchText, setSearchText] = useState("");
   useEffect(()=>{
     fetchData();
   }, []);
@@ -19,23 +22,43 @@ const Body = () => {
   console.log(json);
 
   setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
 
-  return (
+  return ListOfRestaurants.length === 0 ? <Shimmer/> : (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input 
+          type="text" 
+          className="search-box" 
+          value={searchText}
+          onChange = {(e)=>{
+            setSearchText(e.target.value);
+          }}/>
+          
+          <button 
+          onClick = {()=>{
+            const filteredRestaurant = ListOfRestaurants.filter(
+              (res)=>res?.info?.name.toLowerCase().includes(searchText.toLowerCase())
+            );
+            setFilteredRestaurant(filteredRestaurant);
+          }}>Search</button>
+        </div>
+
         <button 
         className="filter-btn" 
         onClick={()=>{
           const filteredList = ListOfRestaurants.filter(
             (res)=> res?.info?.avgRating > 4
           );
-          setListOfRestaurants(filteredList);
+          setFilteredRestaurant(filteredList);
         }}
           >Top Rated Restaurant</button>
       </div>
+
       <div className="res-container">
-        {ListOfRestaurants.map((restaurant)=>
+        {filteredRestaurant.map((restaurant)=>
         <RestaurantCard key={restaurant.info.id} resData={restaurant}/>
         )}
       </div>
