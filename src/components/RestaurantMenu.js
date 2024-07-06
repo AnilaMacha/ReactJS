@@ -20,7 +20,10 @@ const RestaurantMenu =()=>{
     <div>
       <h1 className="font-bold text-2xl text-center m-4">{resData?.name}</h1>
       <p className="font-bold text-center"><u>{resData?.cuisines.join(", ")} - {resData?.costForTwoMessage}</u></p>
-      {categories.map((category)=><RestaurantCategory data={category?.card?.card}/>)}
+      {categories.map((category)=>(
+        <RestaurantCategory 
+          key={category.card.card.title} 
+          data={category?.card?.card}/>))}
     </div>
   );
 };
