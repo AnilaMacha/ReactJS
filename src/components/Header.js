@@ -35,15 +35,15 @@ console.log(cartItems);
           <li className="m-4 p-4">
             <Link to = "/Grocery">Grocery</Link>
           </li>
-          <li className="m-4 p-4">
-            <Link to="/Cart">Cart</Link>-{cartItems.length}
+          <li className="m-2 w-[30px]">
+          {cartItems.length}<Link to="/Cart"><img src="https://img.icons8.com/?size=80&id=43327&format=png"/></Link>
           </li>
           <button className="m-4 px-4 bg-blue-200 rounded-lg" onClick = {()=>
             {
               btnNameReact ==="Login" ? setBtnNameReact("Logout"): setBtnNameReact("Login");
             }
           }>{btnNameReact}</button>
-          <li>{loggedInUser}</li>
+          
         </ul>
       </div>
     </div>
